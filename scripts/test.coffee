@@ -35,6 +35,9 @@ module.exports = (robot) ->
               'sudo -iS bh-tests --test-suite ' + suite + "\n"
         sent = false
         stream.on 'data', (data) ->
+          if data.match /Tests are already running/
+            msg.send "Tests are already running. Woof!"
+            ssh.end
           if data.match /:\~\$/
             if sent
               ssh.end
