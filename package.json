@@ -1,0 +1,26 @@
+{
+  "name":        "champ",
+  "version":     "1.0.0",
+  "author":      "Bloodhound Inc.",
+  "description": "Bloodhound's happy helper. An XMPP chat bot powered by hubot.",
+  "licenses":     [{
+    "type":       "MIT",
+    "url":        "http://github.com/bldhnd/champ/raw/master/LICENSE"
+  }],
+  "homepage": "https://github.com/bldhnd/champ",
+  "repository" : {
+    "type": "git",
+    "url":  "https://github.com/bldhnd/champ.git"
+  },
+  "dependencies": {
+    "hubot": "2.3.x",
+    "hubot-scripts": "2.1.x",
+    "hubot-hipchat": "1.1.x",
+    "optparse": "1.0.x",
+    "node-stringprep": "0.1.5"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
