@@ -22,7 +22,7 @@ module.exports = (robot) ->
     suite = 'all'
     env = 'staging'
     if suiteMatch and suiteMatch[1]
-      suit = suiteMatch[1]
+      suite = suiteMatch[1]
     if envMatch and envMatch[1]
       env = envMatch[1]
     ssh = new SSH
