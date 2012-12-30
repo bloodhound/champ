@@ -17,7 +17,7 @@ SSH = require 'ssh2'
 
 module.exports = (robot) ->
   robot.respond /.*(deploy|push)(.+)?/i, (msg) ->
-    if !robot.Auth.hasRole('engineer')
+    if !robot.Auth.hasRole(msg.message.user.name, 'engineer')
       msg.send "Woof! I'm not listening to you!"
       return
     match = msg.match[2].match /.*(staging|production|live).*/i
