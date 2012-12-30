@@ -63,7 +63,6 @@ module.exports = (robot) ->
     unless robot.name.toLowerCase() is 'hubot'
       emit = emit.replace /hubot/ig, robot.name
 
-    console.log(emit);
     msg.send emit
 
   robot.router.get '/hubot/help', (req, res) ->

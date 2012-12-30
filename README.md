@@ -11,17 +11,19 @@ To see a list of commands, just ask ```champ``` for help:
 
     @champ help
 
-Available commands:
+### Available commands:
 
-    champ <user> doesn't have <role> role - Removes a role from a user  
-    champ <user> has <role> role - Assigns a role to a user  
-    champ cast <card name> - a picture of the named magic card  
-    champ help - Displays all of the help commands that champ knows about.  
-    champ help <query> - Displays all help commands that match <query>.  
-    champ url encode|decode <query> - URL encode or decode <string>  
-    champ url form encode|decode <query> - URL form-data encode or decode <string>  
-    champ what role does <user> have - Find out what roles are assigned to a specific user  
-    champ who has admin role - Find out who's an admin and can assign roles  
+```<user> doesn't have <role> role``` Removes a role from a user  
+```<user> has <role> role``` Assigns a role to a user  
+```cast <card name>``` a picture of the named magic card  
+```deploy <staging|production>``` deploy to staging or production  
+```help``` Displays all of the help commands that champ knows about.  
+```help <query>``` Displays all help commands that match <query>.  
+```run <API|all|browser|iOS> tests on <dev|staging>``` run the tests  
+```url encode|decode <query>``` URL encode or decode <string>  
+```url form encode|decode <query>``` URL form-data encode or decode <string>  
+```what role does <user> have``` Find out what roles are assigned to a specific user  
+```who has admin role``` Find out who's an admin and can assign roles  
 
 ## Development
 
@@ -35,3 +37,13 @@ those dependencies are provided by [npm][npmjs].
 [hubot-scripts](https://github.com/github/hubot-scripts)  
 [optparse](https://github.com/jfd/optparse-js)  
 [node-stringprep (OS X)](https://github.com/astro/node-stringprep)  
+
+The following environment variables are required when running champ:
+
+    HUBOT_HIPCHAT_JID="***@chat.hipchat.com/bot"
+    HUBOT_HIPCHAT_PASSWORD="***"
+    HUBOT_PCHAT_ROOMS="***@conf.hipchat.com"
+    HUBOT_DEV_SERVER="dev.domain.com"
+    HUBOT_STAGING_SERVER="staging.domain.com"
+    HUBOT_DEPLOY_USERNAME="***"
+    HUBOT_DEPLOY_PASSWORD="***"

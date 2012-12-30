@@ -2,7 +2,7 @@
   "name":        "champ",
   "version":     "1.0.0",
   "author":      "Bloodhound Inc.",
-  "description": "Bloodhound's happy helper. An XMPP chat bot powered by hubot.",
+  "description": "Bloodhound's happy helper. A HipChat bot powered by hubot.",
   "licenses":     [{
     "type":       "MIT",
     "url":        "http://github.com/bldhnd/champ/raw/master/LICENSE"
@@ -16,6 +16,7 @@
     "hubot": "2.3.x",
     "hubot-scripts": "2.1.x",
     "hubot-hipchat": "1.1.x",
+    "ssh2": "0.1.x",
     "optparse": "1.0.x",
     "node-stringprep": "0.1.5"
   },
