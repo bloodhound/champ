@@ -40,9 +40,10 @@ those dependencies are provided by [npm][npmjs].
 
 The following environment variables are required when running champ:
 
+    HUBOT_AUTH_ADMIN="User Name"
     HUBOT_HIPCHAT_JID="***@chat.hipchat.com/bot"
     HUBOT_HIPCHAT_PASSWORD="***"
-    HUBOT_PCHAT_ROOMS="***@conf.hipchat.com"
+    HUBOT_HIPCHAT_ROOMS="***@conf.hipchat.com"
     HUBOT_DEV_SERVER="dev.domain.com"
     HUBOT_STAGING_SERVER="staging.domain.com"
     HUBOT_DEPLOY_USERNAME="***"

@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot deploy <staging|production> - deploy to staging or production
+#   hubot deploy <staging|production> - deploy to staging or production. Only users assigned the 'engineer' role may deploy.
 #
 # Author:
 #   None
@@ -17,12 +17,13 @@ SSH = require 'ssh2'
 
 module.exports = (robot) ->
   robot.respond /.*(deploy|push)(.+)?/i, (msg) ->
+    if !robot.Auth.hasRole('engineer')
+      msg.send "Woof! I'm not listening to you!"
+      return
     match = msg.match[2].match /.*(staging|production|live).*/i
     if env = match[1]
       if env == 'live'
         env = 'production'
-      if env == 'live' or env == 'production'
-        return msg.send "Woof! I can't deploy to production. Sorry :("
       ssh = new SSH
       ssh.on 'ready', ->
         ssh.shell (err, stream) ->
