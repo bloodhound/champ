@@ -54,6 +54,9 @@ module.exports = (robot) ->
   robot.respond /help\s*(.*)?$/i, (msg) ->
     cmds = robot.helpCommands()
 
+    cmds = cmds.filter (cmd) ->
+      !cmd.match /(ship it|insult|role|polite|be nice|cheer|body part)/i
+
     if msg.match[1]
       cmds = cmds.filter (cmd) ->
         cmd.match new RegExp(msg.match[1], 'i')

@@ -7,23 +7,11 @@ Bloodhound's happy helper. A HipChat bot powered by hubot.
 Champ is trained to respond to specific commands. You can talk to Champ by @
 mentioning them or sending him a 1-to-1 message.
 
+### Available commands:
+
 To see a list of commands, just ask ```champ``` for help:
 
     @champ help
-
-### Available commands:
-
-```<user> doesn't have <role> role``` Removes a role from a user  
-```<user> has <role> role``` Assigns a role to a user  
-```cast <card name>``` a picture of the named magic card  
-```deploy <staging|production>``` deploy to staging or production  
-```help``` Displays all of the help commands that champ knows about.  
-```help <query>``` Displays all help commands that match <query>.  
-```run <API|all|browser|iOS> tests on <dev|staging>``` run the tests  
-```url encode|decode <query>``` URL encode or decode <string>  
-```url form encode|decode <query>``` URL form-data encode or decode <string>  
-```what role does <user> have``` Find out what roles are assigned to a specific user  
-```who has admin role``` Find out who's an admin and can assign roles  
 
 ## Development
 
