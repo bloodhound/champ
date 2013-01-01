@@ -14,11 +14,9 @@
 #   nesQuick
 
 hugs = [
-  "You are awesome!",
-  "A laugh is a smile that bursts.",
-  "=)",
-  "Everyone smiles in the same language.",
-  "Woof!"
+  "/me wags tail",
+  "Woof! =)",
+  "Everyone smiles in the same language. Woof!"
 ]
 
 module.exports = (robot)->
