@@ -18,7 +18,7 @@ SSH = require 'ssh2'
 module.exports = (robot) ->
   robot.respond /.*test.*/i, (msg) ->
     if !robot.Auth.hasRole(msg.message.user.name, 'engineer')
-      msg.send "Woof! I'm not listening to you!"
+      msg.send "Woof! I'm not listening to you! You're not an engineer."
       return
     suiteMatch = msg.match[0].match /.*(API|all|browser|iOS).*/i
     envMatch = msg.match[0].match /.*(dev|staging).*/i
