@@ -19,6 +19,7 @@ greetings = [
 ]
 
 responses = [
+  "/me wags tail",
   "You're welcome. Woof!",
   "No problem.",
   "Woof! Anytime.",
@@ -50,7 +51,7 @@ youTalkinToMe = (msg, robot) ->
   input.indexOf(name) != -1
 
 module.exports = (robot) ->
-  robot.hear /\b(thanks|thank you|cheers|nice one)\b/i, (msg) ->
+  robot.hear /\b(thanks|thank you|cheers|nice one|good job|good job boy)\b/i, (msg) ->
     msg.reply msg.random responses if youTalkinToMe(msg, robot)
 
   robot.hear /\b(ty|thx)\b/i, (msg) ->
