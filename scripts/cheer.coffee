@@ -14,7 +14,7 @@
 #   carllerche
 
 module.exports = (robot) ->
-  robot.respond /cheer ([\w -]+) up/i, (msg) ->
+  robot.hear /cheer ([\w -]+) up/i, (msg) ->
     aww msg
 
   robot.hear /i( am|'m) emo/i, (msg) ->
