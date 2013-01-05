@@ -5,7 +5,7 @@ Bloodhound's happy helper. A HipChat bot powered by hubot.
 ## Playing with Champ
 
 Champ is trained to respond to specific commands. You can talk to Champ by @
-mentioning them or sending him a 1-to-1 message.
+mentioning him in a room or sending him a 1-to-1 message.
 
 ### Available commands:
 
