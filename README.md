@@ -36,3 +36,5 @@ The following environment variables are required when running champ:
     HUBOT_STAGING_SERVER="staging.domain.com"
     HUBOT_DEPLOY_USERNAME="***"
     HUBOT_DEPLOY_PASSWORD="***"
+    HUBOT_TWITTER_MENTION_QUERY="@bloodhound"
+    HUBOT_TWITTER_MENTION_ROOM="***@conf.hipchat.com"
