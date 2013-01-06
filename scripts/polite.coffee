@@ -15,7 +15,7 @@
 greetings = [
   "/me wags tail",
   "Woof! I'm so happy to see you!",
-  "#{robot.name} at your service! Woof!"
+  "At your service! Woof!"
 ]
 
 responses = [
