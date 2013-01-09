@@ -50,7 +50,7 @@ module.exports = (robot) ->
           throw err
         stream.setEncoding 'utf8'
         cmd = 'echo "' + process.env.HUBOT_DEPLOY_PASSWORD + '" | ' +
-              'sudo -iS bh-tests --test-suite --silent ' + suite + "\n"
+              'sudo -iS bh-tests --test-suite ' + suite + "\n"
         sent = false
         stream.on 'data', (data) ->
           if data.match /Tests are already running/
