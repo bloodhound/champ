@@ -38,13 +38,12 @@ module.exports = (robot) ->
     else
       return null
 
-  robot.brain.on 'loaded', =>
-    robot.logger.info "Loading knowledge"
-    robot.brain.data.knowledge ?= {}
+  robot.logger.info "Loading knowledge"
+  robot.brain.data.knowledge ?= {}
 
-    robot.brain.data.knowledge = basic_knowledge if Object.keys(robot.brain.data.knowledge).length == 0
-    for key, item of robot.brain.data.knowledge
-      respondToAnswer(item)
+  robot.brain.data.knowledge = basic_knowledge if Object.keys(robot.brain.data.knowledge).length == 0
+  for key, item of robot.brain.data.knowledge
+    respondToAnswer(item)
 
   robot.respond /(when )?asked (.*) (reply|answer|return|say) (.*)$/i, (msg) ->
     question = msg.match[2]

@@ -24,6 +24,8 @@ module.exports = (robot) ->
     data = fs.readFileSync brainPath, 'utf-8'
     if data
       robot.brain.mergeData JSON.parse(data)
+    else
+      robot.brain.emit 'loaded'
   catch error
       console.log('Unable to read file', error) unless error.code is 'ENOENT'
 
