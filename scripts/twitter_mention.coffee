@@ -22,10 +22,6 @@ module.exports = (robot) ->
   firstRun = true
 
   setInterval ->
-    if firstRun
-      firstRun = false
-      return null
-
     last_tweet = robot.brain.data.twitter_mention.last_tweet || ''
 
     if twitter_query(robot)?
