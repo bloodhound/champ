@@ -38,3 +38,4 @@ The following environment variables are required when running champ:
     HUBOT_DEPLOY_PASSWORD="***"
     HUBOT_TWITTER_MENTION_QUERY="@bloodhound"
     HUBOT_TWITTER_MENTION_ROOM="***@conf.hipchat.com"
+    FILE_BRAIN_PATH="/path/to/store/brain"
