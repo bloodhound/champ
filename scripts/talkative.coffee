@@ -68,7 +68,8 @@ module.exports = (robot) ->
     for key, item of robot.brain.data.knowledge
       i = 0
       while i < robot.listeners.length
-        robot.listeners.splice(i,1) if String(item.regexp) in String(robot.listeners[i].regex)
+        if String(robot.listeners[i].regex).indexOf(String(item.regexp)) != -1
+          robot.listeners.splice(i,1)
         i++
     robot.brain.data.knowledge = {}
     msg.send "OK, I've forgot all answers"

@@ -15,11 +15,11 @@
 
 twss = require 'twss'
 
-twss.threshold = 0.9
+twss.threshold = 0.95
 
 module.exports = (robot) ->
   robot.brain.on 'loaded', =>
-    robot.brain.twssThreshold ?= 0.9
+    robot.brain.twssThreshold ?= 0.95
     twss.threshold = robot.brain.twssThreshold
 
   robot.hear /.+/i, (msg) ->

@@ -60,5 +60,5 @@ module.exports = (robot) ->
   robot.hear /\b(hello|hi|sup|howdy|good (morning|evening|afternoon))\b/i, (msg) ->
     msg.reply msg.random greetings if youTalkinToMe(msg, robot)
     
-  robot.hear /\b(bye|night|goodbye|good night)\b/i, (msg) ->
+  robot.hear /\b(bye|goodbye|good night)\b/i, (msg) ->
     msg.reply msg.random farewellResponses if youTalkinToMe(msg, robot)
