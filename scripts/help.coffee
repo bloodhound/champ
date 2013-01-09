@@ -55,7 +55,7 @@ module.exports = (robot) ->
     cmds = robot.helpCommands()
 
     cmds = cmds.filter (cmd) ->
-      !cmd.match /(ship it|role|polite|cheer|body part|sensitive|feelings)/i
+      !cmd.match /(ship it|role|polite|cheer|body part|sensitive|feelings|say something|regexp|teached)/i
 
     if msg.match[1]
       cmds = cmds.filter (cmd) ->
