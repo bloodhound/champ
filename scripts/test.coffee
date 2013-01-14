@@ -20,6 +20,14 @@ SSH = require 'ssh2'
 module.exports = (robot) ->
   ssh = new SSH
 
+  ssh.on 'error', (err) ->
+    console.log err
+
+  ssh.on 'keyboard-interactive', (n, i, iL, prompts, finish) ->
+    prompts.filter (prompt) ->
+      if prompt.prompt == 'Password:'
+        finish [process.env.HUBOT_DEPLOY_PASSWORD]
+
   robot.respond /.*are.+tests running/i, (msg) ->
     if ssh._state != 'closed'
       msg.send "Yup the tests are currently running. Woof!"
@@ -44,38 +52,30 @@ module.exports = (robot) ->
     suite = 'all'
     if suiteMatch and suiteMatch[1]
       suite = suiteMatch[1]
-    ssh.on 'ready', ->
+    ssh.once 'ready', ->
       ssh.shell (err, stream) ->
         if err
           throw err
         stream.setEncoding 'utf8'
         cmd = 'echo "' + process.env.HUBOT_DEPLOY_PASSWORD + '" | ' +
-              'sudo -iS bh-tests --test-suite ' + suite + "\n"
-        sent = false
+              'sudo -iS bh-tests --test-suite ' + suite + " --silent\n"
+        sent = false;
         stream.on 'data', (data) ->
           if data.match /Tests are already running/
             msg.send "Tests are already running. Woof!"
-            stream.signal "TERM"
-            stream.end()
             ssh.end()
           if data.match /:\~\$/
             if sent
-              stream.signal "TERM"
-              stream.end()
               ssh.end()
             else
               sent = true
+              response = "Woof! Running " + suite + " tests on " +
+                           process.env.HUBOT_STAGING_SERVER + "!"
+              msg.send response
               stream.write cmd, 'utf8'
-    ssh.on 'keyboard-interactive', (n, i, iL, prompts, finish) ->
-      prompts.filter (prompt) ->
-        if prompt.prompt == 'Password:'
-          finish [process.env.HUBOT_DEPLOY_PASSWORD]
-    ssh.on 'error', (err) ->
-      console.log err
     ssh.connect
       host: process.env.HUBOT_STAGING_SERVER
       port: 22
       username: process.env.HUBOT_DEPLOY_USERNAME
       password: process.env.HUBOT_DEPLOY_PASSWORD
       tryKeyboard: true
-    msg.send "Woof! Running " + suite + " tests on " + process.env.HUBOT_STAGING_SERVER + "!"
