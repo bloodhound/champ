@@ -41,15 +41,15 @@ module.exports = (robot) ->
           stream.setEncoding 'utf8'
           cmd = 'echo "' + process.env.HUBOT_DEPLOY_PASSWORD + '" | ' +
                 'sudo -iS deploy ' + env + "\n"
-          sent = false;
+          sent = false
           stream.on 'data', (data) ->
             if data.match /:\~\$/
               if sent
                 ssh.end()
               else
-                sent = true
                 msg.send "Woof! Deploying to " + env + "!"
                 stream.write cmd, 'utf8'
+                sent = true
       ssh.connect
         host: process.env.HUBOT_STAGING_SERVER
         port: 22

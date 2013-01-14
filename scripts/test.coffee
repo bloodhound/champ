@@ -59,7 +59,7 @@ module.exports = (robot) ->
         stream.setEncoding 'utf8'
         cmd = 'echo "' + process.env.HUBOT_DEPLOY_PASSWORD + '" | ' +
               'sudo -iS bh-tests --test-suite ' + suite + "\n"
-        sent = false;
+        sent = false
         stream.on 'data', (data) ->
           if data.match /Tests are already running/
             msg.send "Tests are already running. Woof!"
@@ -68,11 +68,11 @@ module.exports = (robot) ->
             if sent
               ssh.end()
             else
-              sent = true
               response = "Woof! Running " + suite + " tests on " +
                            process.env.HUBOT_STAGING_SERVER + "!"
               msg.send response
               stream.write cmd, 'utf8'
+              sent = true
     ssh.connect
       host: process.env.HUBOT_STAGING_SERVER
       port: 22
