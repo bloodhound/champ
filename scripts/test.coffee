@@ -18,15 +18,7 @@
 SSH = require 'ssh2'
 
 module.exports = (robot) ->
-  ssh = new SSH
-
-  ssh.on 'error', (err) ->
-    console.log err
-
-  ssh.on 'keyboard-interactive', (n, i, iL, prompts, finish) ->
-    prompts.filter (prompt) ->
-      if prompt.prompt == 'Password:'
-        finish [process.env.HUBOT_DEPLOY_PASSWORD]
+  ssh = {_state: 'closed'}
 
   robot.respond /.*are.+tests running/i, (msg) ->
     if ssh._state != 'closed'
@@ -48,6 +40,17 @@ module.exports = (robot) ->
     if ssh._state != 'closed'
       msg.send "The tests are currently running! Woof!"
       return null
+
+    ssh = new SSH
+
+    ssh.on 'error', (err) ->
+      console.log err
+
+    ssh.on 'keyboard-interactive', (n, i, iL, prompts, finish) ->
+      prompts.filter (prompt) ->
+        if prompt.prompt == 'Password:'
+          finish [process.env.HUBOT_DEPLOY_PASSWORD]
+
     suiteMatch = msg.match[0].match /.*(API|all|browser|iOS).*/i
     suite = 'all'
     if suiteMatch and suiteMatch[1]
@@ -68,11 +71,11 @@ module.exports = (robot) ->
             if sent
               ssh.end()
             else
+              sent = true
               response = "Woof! Running " + suite + " tests on " +
                            process.env.HUBOT_STAGING_SERVER + "!"
               msg.send response
               stream.write cmd, 'utf8'
-              sent = true
     ssh.connect
       host: process.env.HUBOT_STAGING_SERVER
       port: 22
